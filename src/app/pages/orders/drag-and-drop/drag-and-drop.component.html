@@ -1,0 +1,12 @@
+<nb-card class="container">
+  <nb-card-header class="title">{{title}}</nb-card-header>
+  <nb-card-body
+  cdkDropList
+  class="list"
+  [id]="id"
+  [cdkDropListData]="items"
+  [cdkDropListConnectedTo]="connectedListIds"
+  (cdkDropListDropped)="onDrop($event)">
+      <div class="box" *ngFor="let item of items" cdkDrag>item</div>
+</nb-card-body>
+</nb-card>

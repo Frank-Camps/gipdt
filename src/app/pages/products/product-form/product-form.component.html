@@ -1,0 +1,23 @@
+<nb-card>
+  <nb-card-header>Ajouter un produit</nb-card-header>
+</nb-card>
+
+<nb-card>
+  <nb-card-body class="row">
+    <div class="col-md-6 mt-1">
+      <input type="text" fullWidth nbInput placeholder="Nom du produit">
+      <input type="number" fullWidth nbInput placeholder="prix du produit $$$" class="mt-1">
+      <input type="number" fullWidth nbInput placeholder="image du produit" class="mt-1">
+      <textarea fullWidth nbInput placeholder="description du produit" class="mt-1"></textarea>
+      <nb-select class="mt-1" fullWidth placeholder="ajouter une propriété au produit">
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-md-6 mt-1">
+      image
+    </div>
+  </nb-card-body>
+</nb-card>
+<button nbButton outline status="primary">Ajouter</button>
+<button nbButton outline status="danger" class="ml-1">Reset</button>

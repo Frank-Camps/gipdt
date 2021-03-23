@@ -1,0 +1,40 @@
+<div>
+  <!-- <input type="text" nbInput [(ngModel)]="category.id" class="col-md-4" placeholder="id">
+  <input type="text" nbInput [(ngModel)]="category.name" class="col-md-4" placeholder="nom de la catégorie"> -->
+  <button nbButton outline (click)="addNewCatogory()"  class="col-md-2 ml-2"> Ajouter une Propriété</button>
+</div>
+
+<nb-card class="mt-2">
+  <nb-card-header>Propriétées</nb-card-header>
+  <nb-card-body>
+    <nb-accordion *ngFor="let c of categories" class="mt-3">
+      <nb-accordion-item>
+        <nb-accordion-item-header>
+          <div class="col-md-10">
+            {{c.name}}
+          </div>
+          <div class="col-md-2">
+            <button nbButton ghost (click)="deleteProperty(c.id)" status="danger">
+              <nb-icon icon="trash-alt" style="font-size: large;" pack="fa"></nb-icon>
+            </button>
+          </div>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <input type="text" nbInput placeholder="Nouvelle option" [(ngModel)]="c.property"  (keyup.enter)="addNewProperties(c)">
+          <nb-list>
+            <nb-list-item *ngFor="let property of c.properties">
+              <div class="col-md-10">
+                {{property}}
+              </div>
+              <div class="col-md-2">
+                <button nbButton ghost (click)="deleteOptionProperty(c,property)" status="danger">
+                  <nb-icon icon="trash-alt" style="font-size: large;" pack="fa"></nb-icon>
+                </button>
+              </div>
+            </nb-list-item>
+          </nb-list>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+      </nb-accordion>
+  </nb-card-body>
+</nb-card>

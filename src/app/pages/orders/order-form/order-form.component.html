@@ -1,0 +1,134 @@
+<nb-card class="mt-2">
+  <nb-card-header>ID</nb-card-header>
+  <nb-card-body class="row">
+    <div class="col-md-4">
+      <label class="label">Type de commande</label>
+        <nb-select selected="1" fullWidth>
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select>
+    </div>
+    <div class="col-md-4">
+      <label class="label">Type de paiement</label>
+        <nb-select selected="1" fullWidth>
+        <nb-option value="1">Option 1</nb-option>
+        <nb-option value="2">Option 2</nb-option>
+      </nb-select>
+    </div>
+  </nb-card-body>
+</nb-card>
+<!-- client -->
+<nb-card class="mt-2">
+  <nb-card-header>Informations du client</nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="lastname" class="label">Nom de famille</label>
+        <input type="text" nbInput fullWidth id="lastname">
+      </div>
+      <div class="col-md-4">
+        <label for="firstname" class="label">Prénom</label>
+        <input type="text" nbInput fullWidth id="firstname">
+      </div>
+      <div class="col-md-4">
+        <label for="email" class="label">Email</label>
+        <input type="text" nbInput fullWidth id="email">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="address" class="label">addresse</label>
+        <input type="text" nbInput fullWidth id="address">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="city" class="label">Ville</label>
+        <input type="text" nbInput fullWidth id="city">
+      </div>
+      <div class="col-md-4">
+        <label for="zipcode" class="label">Code Postal</label>
+        <input type="text" nbInput fullWidth id="zipcode">
+      </div>
+      <div class="col-md-4">
+        <label for="province" class="label">Province</label>
+        <input type="text" nbInput fullWidth id="province">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="phonenumber1" class="label">Téléphone 1</label>
+        <input type="number" nbInput fullWidth id="phonenumber1">
+      </div>
+      <div class="col-md-4">
+        <label for="phonenumber2" class="label">Téléphone 2</label>
+        <input type="number" nbInput fullWidth id="phonenumber2">
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+<!-- products -->
+<nb-card class="mt-2">
+  <nb-card-header>
+    Produits de la commande
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-6">
+        <nb-select fullWidth placeholder="Produits">
+          <nb-option value="1">Option 1</nb-option>
+          <nb-option value="2">Option 2</nb-option>
+        </nb-select>
+      </div>
+      <button nbButton outline class="ml-1">Ajouter le produit</button>
+    </div>
+        <nb-card class="mt-1">
+          <nb-card-body class="row">
+            <div class="col-md-4">
+              Produit 1
+            </div>
+          </nb-card-body>
+        </nb-card>
+  </nb-card-body>
+</nb-card>
+<!-- Total Amount -->
+<nb-card class="mt-2">
+  <nb-card-header>Total de la commande</nb-card-header>
+  <nb-card-body>
+    <table class="table">
+      <tr>
+        <td>Sous-total</td>
+        <td>
+          <input type="number" nbInput disabled>
+        </td>
+      </tr>
+      <tr>
+        <td>livraison</td>
+        <td>
+          <input type="number" nbInput>
+        </td>
+      </tr>
+      <tr>
+        <td>Tps</td>
+        <td>
+          <input type="number" nbInput disabled>
+        </td>
+      </tr>
+      <tr>
+        <td>Tvq</td>
+        <td>
+          <input type="number" nbInput disabled>
+        </td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>
+          <input type="number" nbInput disabled>
+        </td>
+      </tr>
+    </table>
+  </nb-card-body>
+</nb-card>
+<!-- actions -->
+<button nbButton outline status="primary" class="mr-1">Ajouter</button>
+<button nbButton outline status="danger" class="mr-1">Supprimer</button>

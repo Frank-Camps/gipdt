@@ -1,0 +1,11 @@
+<nb-card (keyup.enter)="submit(category)">
+  <nb-card-header>Nom de la catégorie</nb-card-header>
+  <nb-card-body>
+    <!-- <input [(ngModel)]="category.id" nbInput placeholder="ID de la catégorie"> -->
+    <input [(ngModel)]="category.name" nbInput placeholder="Nom de la catégorie">
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="info" (click)="submit(category)" >Ajouter</button>
+    <button class="cancel" nbButton status="danger" (click)="cancel()">Annuler</button>
+  </nb-card-footer>
+</nb-card>

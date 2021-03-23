@@ -1,0 +1,5 @@
+<div class="row">
+  <ngx-drag-and-drop [id]="'Facture'" [connectedListIds]="['Soumission', 'Facture', 'Reçu d\'achat']" [items]="billIds"  [title]="'Facture'" class="col-md-4"></ngx-drag-and-drop>
+  <ngx-drag-and-drop [id]="'Soumission'" [connectedListIds]="['Soumission', 'Facture', 'Reçu d\'achat']" [items]="quoteIds"  [title]="'Soumission'" class="col-md-4"></ngx-drag-and-drop><!--[items]="quoteIds | ordersFilter:searchId"-->
+  <ngx-drag-and-drop [id]="'Reçu d\'achat'" [connectedListIds]="['Soumission', 'Facture', 'Reçu d\'achat']" [items]="receiptIds"  [title]="'Reçu d\'achat'" class="col-md-4"></ngx-drag-and-drop>
+</div>
