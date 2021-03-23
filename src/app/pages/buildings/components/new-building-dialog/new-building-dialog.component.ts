@@ -11,7 +11,8 @@ export class NewBuildingDialogComponent implements OnInit {
   public newBuilding = {
     id: '',
     number: '',
-    street: ''
+    street: '',
+    city: ''
   }
 
   constructor(protected ref: NbDialogRef<NewBuildingDialogComponent>) { }
@@ -21,6 +22,10 @@ export class NewBuildingDialogComponent implements OnInit {
 
   public submit(): void {
     this.ref.close(this.newBuilding);
+  }
+  
+  public close(): void {
+    this.ref.close();
   }
 
 }

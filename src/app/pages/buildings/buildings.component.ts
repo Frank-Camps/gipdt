@@ -19,15 +19,15 @@ export class BuildingsComponent implements OnInit {
   public addNewBuilding(): void {
     this.dialogService.open(NewBuildingDialogComponent, {hasScroll: true})
     .onClose.subscribe(newBuilding => {
-      console.log('newBuilding', newBuilding)
       if(this.buildings.length === 0) {
         newBuilding.id === '1';
       }
-      if (newBuilding.name === '') {
+      if (newBuilding.number === '' || newBuilding.street === '') {
         return false;
       }
       newBuilding.id = (this.buildings.length  + 1).toString()
       newBuilding && this.buildings.push(newBuilding)
+      console.log('newBuilding', newBuilding)
   });
   }
 

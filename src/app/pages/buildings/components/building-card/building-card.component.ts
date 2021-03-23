@@ -9,7 +9,7 @@ import { NewBuildingDialogComponent } from '../new-building-dialog/new-building-
 })
 export class BuildingCardComponent implements OnInit {
 
-  @Input() b;
+  @Input() newBuilding;
 
   constructor() { }
 
