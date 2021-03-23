@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-6">
+    <button nbButton status="info" (click)="addNewBuilding()">Ajouter un immeuble</button>
+  </div>
+    <div class="col-md-6 search-form-field-container">
+        <nb-form-field style="width: 100%;">
+          <input type="text" nbInput>
+          <nb-icon nbSuffix icon="search" pack="fa"></nb-icon>
+        </nb-form-field>
+    </div>
+</div>
+<div class="row mt-5">
+  <div class="col-md-12">
+    <ngx-building-card *ngFor="let b of buildings" [b]="b"></ngx-building-card>
+  </div>
+</div>

@@ -15,145 +15,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
 
   //========Commandes============
   {
-    title: 'Commandes',
-    icon: 'file-text-outline',
-    children: [
-      {
-        title: 'Consulter',
-        icon: 'folder-outline',
-        link: '/pages/orders/view',
-        home: true,
-      },
-      {
-        title: 'Ajouter',
-        icon: 'file-add-outline',
-        link: '/pages/orders/add',
-      },
-    ],
-  },
-  //========Produits============
-  {
-    title: 'Produits',
-    icon: 'pricetags-outline',
-    children: [
-      {
-        title: 'Tous les produits',
-        icon: 'folder-outline',
-        link: '/pages/products'
-      },
-      {
-        title: 'Ajouter',
-        icon: 'plus-outline',
-        link: '/pages/products/add'
-      },
-      {
-        title: 'Propriétées',
-        icon: {icon: 'cog', pack: 'fa'},
-        link: '/pages/products/properties'
-      },
-    ],
-  },
-  //========Clients============
-  {
-    title: 'Clients',
-    icon: {icon: 'user-tie', pack: 'fa'},
-    children: [
-      {
-        title: 'Tous les clients',
-        icon: {icon: 'address-book', pack: 'fa'},
-        link: '/pages/clients'
-      },
-      {
-        title: 'Ajouter un client',
-        icon: {icon: 'user-plus', pack: 'fa'},
-        link: '/pages/clients/add'
-      },
-    ],
-  },
-  //========Employes============
-  {
-    title: 'Employés',
-    icon: {icon: 'id-card', pack: 'fa'},
-    children: [
-      {
-        title: 'Tous les employés',
-        icon: {icon: 'address-book', pack: 'fa'},
-        link: '/pages/employes'
-      },
-      {
-        title: 'Ajouter un employé',
-        icon: 'plus-outline',
-        link: '/pages/employes/add'
-      },
-    ],
-  },
-  //========Finances============
-  {
-    title: 'Finances',
-    icon: {icon: 'dollar-sign', pack: 'fa'},
-    children: [
-      {
-        title: 'Tous les produits',
-        icon: 'folder-outline',
-        link: '/pages/products'
-      },
-      {
-        title: 'Ajouter',
-        icon: 'plus-outline',
-        link: '/pages/products/add'
-      },
-      {
-        title: 'Propriétées',
-        icon: {icon: 'cog', pack: 'fa'},
-        link: '/pages/products/properties'
-      },
-    ],
+    title: 'Immeubles',
+    icon: {icon: 'building', pack: 'far'},
+    link: '/pages/buildings',
+    home: true
+    // children: [
+    //   {
+    //     title: 'Consulter',
+    //     icon: 'folder-outline',
+    //     link: '/pages/buildings',
+    //     home: true,
+    //   }
+    // ],
   },
 
-  //========Analytics============
-  {
-    title: 'Statistiques',
-    icon: {icon: 'chart-line', pack: 'fa'},
-    children: [
-      {
-        title: 'Tous les produits',
-        icon: 'folder-outline',
-        link: '/pages/products'
-      },
-      {
-        title: 'Ajouter',
-        icon: 'plus-outline',
-        link: '/pages/products/add'
-      },
-      {
-        title: 'Propriétées',
-        icon: {icon: 'cog', pack: 'fa'},
-        link: '/pages/products/properties'
-      },
-    ],
-  },
-  //========Serveur============
-  {
-    title: 'Serveurs',
-    icon: {icon: 'server', pack: 'fa'},
-    children: [
-      {
-        title: 'Tous les produits',
-        icon: 'folder-outline',
-        link: '/pages/products'
-      },
-      {
-        title: 'Ajouter',
-        icon: 'plus-outline',
-        link: '/pages/products/add'
-      },
-      {
-        title: 'Propriétées',
-        icon: {icon: 'cog', pack: 'fa'},
-        link: '/pages/products/properties'
-      },
-    ],
-  },
   // {
   //     },
   //     {

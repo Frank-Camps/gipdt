@@ -1,0 +1,19 @@
+.newBuildingInfosContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.newBuildingFormField {
+  margin: 0 15px;
+}
+
+.newBuildingAppartmentsList {
+  width: 100% ;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.newBuildingDialogAction {
+  margin: 0 10px;
+}

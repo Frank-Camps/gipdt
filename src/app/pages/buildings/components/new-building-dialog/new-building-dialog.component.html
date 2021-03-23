@@ -1,0 +1,17 @@
+<nb-card class="container">
+  <nb-card-header>Ajouter un Nouvelle immeuble</nb-card-header>
+  <nb-card-body>
+    <div class="newBuildingInfosContainer">
+      <nb-form-field class="newBuildingFormField">
+        <input type="text" nbInput fullWidth placeholder="Numéro de l'immeuble" [(ngModel)]="newBuilding.number">
+      </nb-form-field>
+      <nb-form-field class="newBuildingFormField">
+        <input type="text" nbInput fullWidth placeholder="Rue de l'immeuble" [(ngModel)]="newBuilding.street">
+      </nb-form-field>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <button class="newBuildingDialogAction" nbButton status="info" (click)="submit()">Ajouter</button>
+    <button class="newBuildingDialogAction" nbButton outline>Annuler</button>
+  </nb-card-footer>
+</nb-card>

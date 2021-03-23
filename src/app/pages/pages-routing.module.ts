@@ -19,24 +19,14 @@ const routes: Routes = [{
     //   component: DashboardComponent,
     // },
     {
-      path: 'orders',
-      loadChildren: () => import('./orders/orders.module')
-      .then(m => m.OrdersModule),
+      path: 'buildings',
+      loadChildren: () => import('./buildings/buildings.module')
+      .then(m => m.BuildingsModule),
     },
     {
       path: 'products',
       loadChildren: () => import('./products/products.module')
       .then(m => m.ProductsModule),
-    },
-    {
-      path: 'clients',
-      loadChildren: () => import('./clients/clients.module')
-      .then(m => m.ClientsModule),
-    },
-    {
-      path: 'employes',
-      loadChildren: () => import('./employes/employes.module')
-      .then(m => m.EmployesModule),
     },
 
 
@@ -92,7 +82,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'orders/view',
+      redirectTo: '',
       pathMatch: 'full',
     },
     {
