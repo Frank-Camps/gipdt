@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NbAccordionModule, NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputModule, NbListModule, NbSelectModule } from '@nebular/theme';
+import { NbAccordionModule, NbButtonModule, NbCardModule, NbDialogModule, NbFormFieldModule, NbIconModule, NbInputModule, NbListModule, NbSelectModule } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
 import { BuildingsComponent } from './buildings.component';
 import { BuildingsRoutingModule } from './buildings-routing.module';
@@ -26,6 +26,7 @@ import { NewAppartmentDialogComponent } from './components/new-appartment-dialog
     NbAccordionModule,
     NbListModule,
     NbIconModule,
+    NbDialogModule
   ]
 })
 export class BuildingsModule { }

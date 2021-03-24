@@ -1,3 +1,4 @@
+import { BuildingEffects } from './@store/effects/building.effect';
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
@@ -25,6 +26,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './@store'
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from './../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -47,6 +49,9 @@ import { environment } from './../environments/environment';
     ThemeModule.forRoot(),
     // store
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([
+      BuildingEffects
+    ]),
     StoreRouterConnectingModule.forRoot(),
         !environment.production
             ? StoreDevtoolsModule.instrument({ maxAge: 25 })
