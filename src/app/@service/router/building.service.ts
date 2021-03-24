@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import axios from "axios";
 import { environment } from "../../../environments/environment";
-import { Building } from "../../@interface/Building.interface"
 
 const url = environment.apiUrl + "buildings/";
 // const http = AxiosInterceptor(url);
@@ -13,7 +12,7 @@ export class HttpBuildingsService {
     public constructor() {}
     // Put
     static async putBuildingbyId(id: string, building: any) {
-        
+        console.log(id);
         return axios.put(url + id, building);
     }
 

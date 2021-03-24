@@ -1,11 +1,10 @@
 import { HttpBuildingsService } from './../../@service/router/building.service';
-import { buildingActionTypes } from './../actions/building.action';
+import { buildingActionTypes, LoadBuildingAction, GetAllBuildingsAction, SaveBuildingAction } from './../actions/building.action';
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Observable } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
 import { AxiosResponse } from "axios";
-import { GetAllBuildingsAction, SaveBuildingAction } from "../actions/building.action";
 
 @Injectable()
 export class BuildingEffects {
@@ -22,18 +21,15 @@ export class BuildingEffects {
         })
     );
 
-    // @Effect()
-    // getAllOrders$: Observable<LoadOrdersAction> = this.actions$.pipe(
-    //     ofType<GetAllOrdersAction>(orderActionTypes.GET_ALL_ORDERS),
-    //     switchMap(() => HttpOrderService.getOrders()),
-    //     map((response: AxiosResponse<any>) => {
-    //         response.data.forEach((order: any)=> {
-    //             order.client = order.client ? order.client : {...MOCK_CLIENT};
-    //         });
-    //         console.log("get all orders response: ", response.data);
-    //         return new LoadOrdersAction(response.data);
-    //     })
-    // );
+    @Effect()
+    getAllOrders$: Observable<LoadBuildingAction> = this.actions$.pipe(
+        ofType<GetAllBuildingsAction>(buildingActionTypes.GET_ALL_BUILDING),
+        switchMap(() => HttpBuildingsService.getBuildings()),
+        map((response: AxiosResponse<any>) => {
+            console.log("get all orders response: ", response.data);
+            return new LoadBuildingAction(response.data);
+        })
+    );
 
     // @Effect()
     // deleteOrder$: Observable<GetAllOrdersAction> = this.actions$.pipe(

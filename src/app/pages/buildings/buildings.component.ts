@@ -36,7 +36,7 @@ export class BuildingsComponent implements OnInit, OnDestroy {
 
   public addNewBuilding(): void {
     this.dialogService.open(NewBuildingDialogComponent, {/*context: {newBuilding: this.building} */})
-    .onClose.subscribe((newBuilding) => {
+    /*.onClose.subscribe((newBuilding) => {
       if(this.buildings.length === 0) {
         newBuilding.id === '1';
       }
@@ -47,7 +47,7 @@ export class BuildingsComponent implements OnInit, OnDestroy {
       newBuilding && this.buildings.push(newBuilding)
       console.log('newBuilding', newBuilding)
       // this.store.dispatch(new SaveBuildingAction(newBuilding));
-  });
+  });*/
   }
 
 }
