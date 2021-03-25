@@ -8,6 +8,7 @@ export interface IBuildingAction {
     SAVE_BUILDING: string;
     SELECT_BUILDING: string;
     LOAD_BUILDINGS: string;
+    DELETE_BUILDING: string;
 }
 
 export const buildingActionTypes: IBuildingAction = {
@@ -15,6 +16,8 @@ export const buildingActionTypes: IBuildingAction = {
     SAVE_BUILDING: `[${CATEGORY}] Save`,
     GET_ALL_BUILDING: `[${CATEGORY}] Get All`,
     LOAD_BUILDINGS: `[${CATEGORY}] Load`,
+    DELETE_BUILDING: `[${CATEGORY}] Delete`,
+
 }
 
 export class GetAllBuildingsAction implements Action {
@@ -41,8 +44,14 @@ export class LoadBuildingAction implements Action {
     public constructor(public buildings: Building[]) { }
 }
 
+export class DeleteBuildingAction implements Action {
+    type: string = buildingActionTypes.DELETE_BUILDING;
 
-export type BuildingActions = 
+    public constructor(public buildingID: string) { }
+}
+
+
+export type BuildingActions =
 GetAllBuildingsAction |
 SaveBuildingAction |
-SelectBuildingAction 
+SelectBuildingAction

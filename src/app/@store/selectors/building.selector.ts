@@ -11,4 +11,8 @@ export namespace BuildingSelector {
         buildingState,
         (state: IBuildingState) => state.buildings,
     );
+    export const selectedBuilding: MemoizedSelector<IAppState, Building | undefined> = createSelector(
+      buildingState,
+      (state: IBuildingState) => state.selectedBuilding,
+  );
 }

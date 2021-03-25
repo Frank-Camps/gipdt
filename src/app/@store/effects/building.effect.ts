@@ -1,5 +1,5 @@
 import { HttpBuildingsService } from './../../@service/router/building.service';
-import { buildingActionTypes, LoadBuildingAction, GetAllBuildingsAction, SaveBuildingAction } from './../actions/building.action';
+import { buildingActionTypes, LoadBuildingAction, GetAllBuildingsAction, SaveBuildingAction, DeleteBuildingAction } from './../actions/building.action';
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Observable } from "rxjs";
@@ -14,7 +14,7 @@ export class BuildingEffects {
     modifyOrder$: Observable<GetAllBuildingsAction> = this.actions$.pipe(
         ofType<SaveBuildingAction>(buildingActionTypes.SAVE_BUILDING),
         map((action: SaveBuildingAction) => action.building),
-        switchMap(building => HttpBuildingsService.putBuildingbyId(building.id, building)),
+        switchMap(building => HttpBuildingsService.putBuildingById(building.id, building)),
         map((response: AxiosResponse<any>) => {
             console.log("put Building response: ", response.data);
             return new GetAllBuildingsAction();
@@ -31,14 +31,14 @@ export class BuildingEffects {
         })
     );
 
-    // @Effect()
-    // deleteOrder$: Observable<GetAllOrdersAction> = this.actions$.pipe(
-    //     ofType<DeleteOrderAction>(orderActionTypes.DELETE_ORDER),
-    //     map((action: DeleteOrderAction) => action.id),
-    //     switchMap(id => HttpOrderService.deleteOrderById(id)),
-    //     map((response: AxiosResponse<any>) => {
-    //         console.log("delete order response: ", response.data);
-    //         return new GetAllOrdersAction();
-    //     })
-    // );
+    @Effect()
+    deleteOrder$: Observable<GetAllBuildingsAction> = this.actions$.pipe(
+        ofType<DeleteBuildingAction>(buildingActionTypes.DELETE_BUILDING),
+        map((action: DeleteBuildingAction) => action.buildingID),
+        switchMap(id => HttpBuildingsService.deleteOrderById(id)),
+        map((response: AxiosResponse<any>) => {
+            console.log("delete order response: ", response.data);
+            return new GetAllBuildingsAction();
+        })
+    );
 }

@@ -1,4 +1,4 @@
-import { Building, MOCK_BUILDING } from './../../@interface/Building.interface';
+import { Building } from './../../@interface/Building.interface';
 import { BuildingActions, buildingActionTypes, LoadBuildingAction, SelectBuildingAction } from './../actions/building.action';
 import { IBuildingState, INIT_BUILDING_STATE } from './../states/building.state';
 
@@ -6,15 +6,17 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
     switch(action.type) {
 
         case buildingActionTypes.SELECT_BUILDING: {
-            const buildingId: string = (action as SelectBuildingAction).buildingId;
-            let building: Building | undefined = state.buildings.find(o => o.id === building.id);
+          const buildingId: string = (action as SelectBuildingAction).buildingId;
+          console.log(state.buildings, 'building in reducer')
+          let building: Building | undefined = state.buildings.find(o => o.id === buildingId);
 
-            if(!building) {
-                building = {...MOCK_BUILDING};
-                building.id = buildingId;
-            }
+            // if(!building) {
+            //     building = {...MOCK_BUILDING};
+            //     building.id = buildingId;
+            // }
             return {
-                ...state, selectedBuilding: {...building}
+                ...state,
+                selectedBuilding: {...building}
             }
         }
 
