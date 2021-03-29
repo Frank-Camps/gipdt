@@ -1,3 +1,5 @@
+import { MOCK_TENANT, Tenant } from './../../../../@interface/Tenant.interface';
+import { NewAppartmentDialogComponent } from './../new-appartment-dialog/new-appartment-dialog.component';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { Store } from '@ngrx/store';
@@ -18,6 +20,7 @@ export class BuildingCardComponent implements OnInit, OnDestroy {
   // @Input() newBuilding;
   @Input() newBuilding: Building;
   public subs: Subscription[] = [];
+  public tenant: Tenant = {...MOCK_TENANT};
 
 
   constructor(private dialogService: NbDialogService, private store:Store<IAppState>) { }
@@ -36,6 +39,15 @@ export class BuildingCardComponent implements OnInit, OnDestroy {
 
   public deleteBuilding(id: string): void {
     this.store.dispatch(new DeleteBuildingAction(id));
+  }
+
+  public addNewAppartment(): void {
+    this.store.dispatch(new SelectBuildingAction(this.newBuilding.id));
+    this.dialogService.open(NewAppartmentDialogComponent, {})
+  }
+
+  public addNewTenantToAppartment() {
+    
   }
 
 }

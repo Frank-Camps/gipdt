@@ -1,1 +1,27 @@
-<p>new-appartment-dialog works!</p>
+<nb-card size="large" style="width: 100vh;">
+    <nb-card-header class="main-card-header">
+        <nb-form-field>
+            <label>Appartement #</label>
+            <input nbInput type="text" />
+        </nb-form-field>
+        <nb-form-field>
+            <label>Disponibilité</label>
+            <nb-select placeholder="NgModel" fullWidth>
+                <nb-option value="1">Disponible</nb-option>
+                <nb-option value="2">Loué</nb-option>
+                <nb-option value="3">En rénovation</nb-option>
+              </nb-select>
+        </nb-form-field>
+    </nb-card-header>
+    <nb-card-body>
+        <nb-card>
+            <nb-card-header>
+                Locataires
+                <button nbButton status="info" (click)="addNewTenantToAppartment()">Ajouter un locataire</button>
+            </nb-card-header>
+            <nb-card-body>
+
+            </nb-card-body>
+        </nb-card>
+    </nb-card-body>
+</nb-card>
