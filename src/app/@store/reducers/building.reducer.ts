@@ -7,8 +7,8 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
 
         case buildingActionTypes.SELECT_BUILDING: {
           const buildingId: string = (action as SelectBuildingAction).buildingId;
-          console.log(state.buildings, 'building in reducer')
           let building: Building | undefined = state.buildings.find(o => o.id === buildingId);
+          console.log(building, 'selectedBuilding in reducer')
 
             // if(!building) {
             //     building = {...MOCK_BUILDING};

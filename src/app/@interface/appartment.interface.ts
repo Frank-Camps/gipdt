@@ -1,9 +1,9 @@
-import { Tenant } from "./Tenant.interface";
+import { MOCK_TENANT, Tenant } from "./Tenant.interface";
 
 export interface Appartment {
     civic_number: string;
     tenants: Tenant[];
-    status: string[];
+    status: string;
     rooms: string;
     price: number;
     // documents: ?
@@ -11,7 +11,7 @@ export interface Appartment {
 
 export const MOCK_APPARTMENT = {
     civic_number: '',
-    tenants: [],
+    tenants: [MOCK_TENANT],
     status: '',
     rooms: '',
     price: 0,

@@ -9,6 +9,7 @@ import { IAppState } from '../../../../@store';
 import { DeleteBuildingAction, SelectBuildingAction } from '../../../../@store/actions/building.action';
 import { BuildingSelector } from '../../../../@store/selectors/building.selector';
 import { NewBuildingDialogComponent } from '../new-building-dialog/new-building-dialog.component';
+import { Appartment, MOCK_APPARTMENT } from '../../../../@interface/appartment.interface';
 
 @Component({
   selector: 'ngx-building-card',
@@ -20,7 +21,7 @@ export class BuildingCardComponent implements OnInit, OnDestroy {
   // @Input() newBuilding;
   @Input() newBuilding: Building;
   public subs: Subscription[] = [];
-  public tenant: Tenant = {...MOCK_TENANT};
+  public appartments: Appartment[] = [];
 
 
   constructor(private dialogService: NbDialogService, private store:Store<IAppState>) { }
@@ -30,6 +31,10 @@ export class BuildingCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {}
+
+  public selectBuilding(id: string):void {
+    this.store.dispatch(new SelectBuildingAction(id));
+  }
 
   public modifyBuilding(building): void {
     this.store.dispatch(new SelectBuildingAction(building.id));
@@ -43,11 +48,14 @@ export class BuildingCardComponent implements OnInit, OnDestroy {
 
   public addNewAppartment(): void {
     this.store.dispatch(new SelectBuildingAction(this.newBuilding.id));
-    this.dialogService.open(NewAppartmentDialogComponent, {})
+    this.dialogService.open(NewAppartmentDialogComponent, {context: {appartment: {...MOCK_APPARTMENT}}})
   }
 
-  public addNewTenantToAppartment() {
-    
+  public selectAppartment(appartment: Appartment):void {
+    this.store.dispatch(new SelectBuildingAction(this.newBuilding.id));
+    console.log('civic_number ', appartment)
+    this.dialogService.open(NewAppartmentDialogComponent, {context: {appartment: appartment}})
   }
+
 
 }

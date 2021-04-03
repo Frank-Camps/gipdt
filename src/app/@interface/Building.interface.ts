@@ -1,4 +1,4 @@
-import { Appartment } from './appartment.interface';
+import { Appartment, MOCK_APPARTMENT } from './appartment.interface';
 
 export interface Building {
     id: string;
@@ -13,6 +13,6 @@ export const MOCK_BUILDING = {
     street_number: '',
     street_name: '',
     city: '',
-    appartments: [],
+    appartments: [MOCK_APPARTMENT,MOCK_APPARTMENT],
 }
 

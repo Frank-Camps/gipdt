@@ -1,8 +1,8 @@
-<nb-card size="large" style="width: 100vh;">
+<nb-card size="large">
     <nb-card-header class="main-card-header">
         <nb-form-field>
             <label>Appartement #</label>
-            <input nbInput type="text" />
+            <input nbInput type="text" [(ngModel)]="appartment.civic_number"/>
         </nb-form-field>
         <nb-form-field>
             <label>Disponibilité</label>
@@ -20,7 +20,7 @@
                 <button nbButton status="info" (click)="addNewTenantToAppartment()">Ajouter un locataire</button>
             </nb-card-header>
             <nb-card-body>
-
+                <ngx-tenant [tenants]="appartment.tenants"></ngx-tenant>
             </nb-card-body>
         </nb-card>
     </nb-card-body>

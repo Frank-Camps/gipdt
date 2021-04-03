@@ -8,7 +8,6 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ProductsModule } from './products/products.module';
-import { BuildingsComponent } from './buildings/buildings.component';
 import { BuildingsModule } from './buildings/buildings.module';
 
 @NgModule({

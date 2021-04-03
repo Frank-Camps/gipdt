@@ -8,12 +8,14 @@ import { BuildingsRoutingModule } from './buildings-routing.module';
 import { BuildingCardComponent } from './components/building-card/building-card.component';
 import { NewBuildingDialogComponent } from './components/new-building-dialog/new-building-dialog.component';
 import { NewAppartmentDialogComponent } from './components/new-appartment-dialog/new-appartment-dialog.component';
+import { ThemeModule } from '../../@theme/theme.module';
 
 
 
 @NgModule({
   declarations: [BuildingsComponent, BuildingCardComponent, NewBuildingDialogComponent, NewAppartmentDialogComponent],
   imports: [
+    ThemeModule,
     CommonModule,
     RouterModule,
     BuildingsRoutingModule,
