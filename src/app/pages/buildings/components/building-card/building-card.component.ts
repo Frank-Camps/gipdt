@@ -10,6 +10,7 @@ import { DeleteBuildingAction, SelectBuildingAction } from '../../../../@store/a
 import { BuildingSelector } from '../../../../@store/selectors/building.selector';
 import { NewBuildingDialogComponent } from '../new-building-dialog/new-building-dialog.component';
 import { Appartment, MOCK_APPARTMENT } from '../../../../@interface/appartment.interface';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'ngx-building-card',
@@ -17,9 +18,7 @@ import { Appartment, MOCK_APPARTMENT } from '../../../../@interface/appartment.i
   styleUrls: ['./building-card.component.scss']
 })
 export class BuildingCardComponent implements OnInit, OnDestroy {
-
-  // @Input() newBuilding;
-  @Input() newBuilding: Building;
+  @Input() building: Building;
   public subs: Subscription[] = [];
   public appartments: Appartment[] = [];
 
@@ -47,12 +46,12 @@ export class BuildingCardComponent implements OnInit, OnDestroy {
   }
 
   public addNewAppartment(): void {
-    this.store.dispatch(new SelectBuildingAction(this.newBuilding.id));
-    this.dialogService.open(NewAppartmentDialogComponent, {context: {appartment: {...MOCK_APPARTMENT}}})
+    this.store.dispatch(new SelectBuildingAction(this.building.id)); //select le bon building
+    this.dialogService.open(NewAppartmentDialogComponent, {context: {appartment: {...MOCK_APPARTMENT}}});//ouvre le dialog avec appart vide
   }
 
   public selectAppartment(appartment: Appartment):void {
-    this.store.dispatch(new SelectBuildingAction(this.newBuilding.id));
+    this.store.dispatch(new SelectBuildingAction(this.building.id));
     this.dialogService.open(NewAppartmentDialogComponent, {context: {appartment: appartment}})
   }
 

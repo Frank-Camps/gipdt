@@ -14,24 +14,30 @@ import { BuildingSelector } from '../../../../@store/selectors/building.selector
 export class NewAppartmentDialogComponent implements OnInit {
 
   public tenant: Tenant = {...MOCK_TENANT};
-  @Input() appartment: Appartment;
+  @Input() appartment: Appartment; //receive from building-card component
   public appartments: Appartment[] = [];
+  public selectedAppartment: Appartment;
 
   constructor(private store: Store<IAppState>) { }
 
   ngOnInit(): void {
-
   }
 
   public addNewTenantToAppartment(appartment: Appartment): void {
-    let selectedAppartment: Appartment;
     this.store.select(BuildingSelector.selectedBuilding).subscribe((building: Building) => {
-      selectedAppartment = building.appartments.find(c => c === appartment);
-      console.log(selectedAppartment);
-      
+      // this.selectedAppartment = building.appartments.find(c => c === appartment);
+      // console.log('appartment ', appartment);
+      appartment.tenants.push({...MOCK_TENANT});
     })
 
   }
 
+  public addNewAppartment(appartment: Appartment):void {
+    this.appartment = appartment;
+    this.store.select(BuildingSelector.selectedBuilding).subscribe(building => {
+      console.log('appartments ', building.appartments);
+      
 
+    })
+  }
 }

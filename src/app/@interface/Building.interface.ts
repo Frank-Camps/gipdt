@@ -13,6 +13,6 @@ export const MOCK_BUILDING = {
     street_number: '',
     street_name: '',
     city: '',
-    appartments: [MOCK_APPARTMENT,MOCK_APPARTMENT],
+    appartments: [],
 }
 

@@ -20,6 +20,7 @@ export class NewBuildingDialogComponent implements OnInit {
   constructor(protected ref: NbDialogRef<NewBuildingDialogComponent>, public store: Store<IAppState>) { }
 
   ngOnInit(): void {
+    console.log('this.newBuilding ', this.newBuilding);
 
   }
 

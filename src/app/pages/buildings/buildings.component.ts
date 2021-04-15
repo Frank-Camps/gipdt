@@ -26,9 +26,13 @@ export class BuildingsComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+    HttpIdsService.getIndexId().then((id: AxiosResponse) => {
+      HttpIdsService.putIndexId((id.data.value + 1) % 100).catch((e) => console.log(e));
+      this.building.id = ((id.data.value).toString());
+    }).catch((e) => console.log(e));
     this.subs.push(
       this.store.select(BuildingSelector.buildings).subscribe(buildings => {
-          this.buildings = buildings
+          this.buildings = buildings;
       })
     )
     this.store.dispatch(new GetAllBuildingsAction);
@@ -41,9 +45,8 @@ export class BuildingsComponent implements OnInit, OnDestroy {
   public addNewBuilding(): void {
     HttpIdsService.getIndexId().then((id: AxiosResponse) => {
       HttpIdsService.putIndexId((id.data.value + 1) % 100).catch((e) => console.log(e));
-      this.building.id = ((id.data.value).toString().padStart(2, "0"));
-  }).catch((e) => console.log(e));
-
+      this.building.id = ((id.data.value).toString());
+    }).catch((e) => console.log(e));
     this.dialogService.open(NewBuildingDialogComponent, {context: {newBuilding: {...this.building}}})
   }
 
