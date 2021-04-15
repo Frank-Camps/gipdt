@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store";
+import { Appartment } from "../../@interface/appartment.interface";
 import { Building } from "../../@interface/Building.interface";
 
 const CATEGORY: string = "Building";
@@ -9,6 +10,7 @@ export interface IBuildingAction {
     SELECT_BUILDING: string;
     LOAD_BUILDINGS: string;
     DELETE_BUILDING: string;
+    ADD_TENANT_TO_APPARTMENT: string;
 }
 
 export const buildingActionTypes: IBuildingAction = {
@@ -17,6 +19,7 @@ export const buildingActionTypes: IBuildingAction = {
     GET_ALL_BUILDING: `[${CATEGORY}] Get All`,
     LOAD_BUILDINGS: `[${CATEGORY}] Load`,
     DELETE_BUILDING: `[${CATEGORY}] Delete`,
+    ADD_TENANT_TO_APPARTMENT: `[${CATEGORY}] Add tenant to appartment`,
 
 }
 
@@ -50,8 +53,14 @@ export class DeleteBuildingAction implements Action {
     public constructor(public buildingID: string) { }
 }
 
+export class AddTenantToAppartment implements Action {
+    type: string = buildingActionTypes.ADD_TENANT_TO_APPARTMENT;
+    public constructor(public appartment: Appartment) {}
+}
+
 
 export type BuildingActions =
 GetAllBuildingsAction |
 SaveBuildingAction |
-SelectBuildingAction
+SelectBuildingAction |
+AddTenantToAppartment

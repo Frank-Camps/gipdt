@@ -17,11 +17,14 @@
         <nb-card>
             <nb-card-header>
                 Locataires
-                <button nbButton status="info" (click)="addNewTenantToAppartment()">Ajouter un locataire</button>
+                <button nbButton status="info" (click)="addNewTenantToAppartment(appartment)">Ajouter un locataire</button>
             </nb-card-header>
             <nb-card-body>
                 <ngx-tenant [tenants]="appartment.tenants"></ngx-tenant>
             </nb-card-body>
         </nb-card>
     </nb-card-body>
+    <nb-card-footer>
+        <button nbButton status="info">sauvegarder</button>
+    </nb-card-footer>
 </nb-card>

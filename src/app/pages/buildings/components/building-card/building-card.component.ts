@@ -53,7 +53,6 @@ export class BuildingCardComponent implements OnInit, OnDestroy {
 
   public selectAppartment(appartment: Appartment):void {
     this.store.dispatch(new SelectBuildingAction(this.newBuilding.id));
-    console.log('civic_number ', appartment)
     this.dialogService.open(NewAppartmentDialogComponent, {context: {appartment: appartment}})
   }
 

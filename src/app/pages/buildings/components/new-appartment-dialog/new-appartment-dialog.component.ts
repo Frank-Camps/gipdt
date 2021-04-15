@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Appartment, MOCK_APPARTMENT } from '../../../../@interface/appartment.interface';
+import { Building } from '../../../../@interface/Building.interface';
 import { MOCK_TENANT, Tenant } from '../../../../@interface/Tenant.interface';
 import { IAppState } from '../../../../@store';
+import { BuildingSelector } from '../../../../@store/selectors/building.selector';
 
 @Component({
   selector: 'ngx-new-appartment-dialog',
@@ -21,7 +23,15 @@ export class NewAppartmentDialogComponent implements OnInit {
 
   }
 
-  public addNewTenantToAppartment(): void {}
+  public addNewTenantToAppartment(appartment: Appartment): void {
+    let selectedAppartment: Appartment;
+    this.store.select(BuildingSelector.selectedBuilding).subscribe((building: Building) => {
+      selectedAppartment = building.appartments.find(c => c === appartment);
+      console.log(selectedAppartment);
+      
+    })
+
+  }
 
 
 }

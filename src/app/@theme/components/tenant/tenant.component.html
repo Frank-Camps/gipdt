@@ -1,24 +1,24 @@
 <div class="tenant-card-body-wrapper">
   <nb-form-field class="tenant-card-body-form-field">
     <label>Nom de famille</label>
-    <input nbInput fullWidth type="text" [(ngModel)]="tenant.firstName" />
+    <input nbInput fullWidth type="text" [(ngModel)]="tenant.lastName" />
   </nb-form-field>
   <nb-form-field class="tenant-card-body-form-field">
     <label>Prénom</label>
-    <input nbInput fullWidth type="text"/>
+    <input nbInput fullWidth type="text" [(ngModel)]="tenant.firstName"/>
   </nb-form-field>
   <nb-form-field class="tenant-card-body-form-field">
     <label>Email</label>
-    <input nbInput fullWidth type="email"/>
+    <input nbInput fullWidth type="email" [(ngModel)]="tenant.email"/>
   </nb-form-field>
 </div>
 <div class="tenant-card-body-wrapper">
   <nb-form-field class="tenant-card-body-form-field">
     <label>téléphone 1</label>
-    <input nbInput fullWidth type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+    <input nbInput fullWidth type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" [(ngModel)]="tenant.phone1"/>
   </nb-form-field>
   <nb-form-field class="tenant-card-body-form-field">
     <label>téléphone 2</label>
-    <input nbInput fullWidth type="tel"/>
+    <input nbInput fullWidth type="tel" [(ngModel)]="tenant.phone2"/>
   </nb-form-field>
 </div>

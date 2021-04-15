@@ -12,7 +12,7 @@ export class TenantComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.tenants.forEach(t => { this.tenant = t})
+    this.tenants.forEach(t => { this.tenant = {...t}})
   }
 
 }
