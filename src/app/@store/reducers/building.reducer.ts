@@ -33,32 +33,41 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
             let alreadyExists = false;
             let appartmentIndex: number;
 
-            for (const buildingAppartment of state.selectedBuilding.appartments) {
-                if (buildingAppartment.civic_number === appartment.civic_number) {
-                  alreadyExists = true;
-                  appartmentIndex = state.selectedBuilding.appartments.indexOf(buildingAppartment);
-                  console.log('appartment ', appartmentIndex);
-                }
-              }
-            
-            if (alreadyExists) {
-            const newAppartment: Appartment =
-                state.selectedBuilding.appartments.find((a) => a.civic_number === appartment.civic_number)
-    
-            let updatedAppartment: Appartment = { ...appartment };
-            updatedAppartment = appartment;
-    
-            const updatedAppartments: Appartment[] = [...state.selectedBuilding.appartments];
-            updatedAppartments[appartmentIndex] = updatedAppartment;
+            let selectedBuildingAppartment: Appartment[] = [...state.selectedBuilding.appartments, {...appartment}];
+            let selectedBuildingUpdated: Building = {...state.selectedBuilding, appartments: selectedBuildingAppartment}
 
-            let updatedBuilding: Building = {...state.selectedBuilding}
-            updatedBuilding.appartments[appartmentIndex] = updatedAppartment;
-    
-            return {
-                ...state,
-                selectedBuilding: {...updatedBuilding},
-            };
-            } 
+
+          return {
+            ...state,
+            selectedBuilding: {...selectedBuildingUpdated}
+          }
+
+            // for (const buildingAppartment of state.selectedBuilding.appartments) {
+            //     if (buildingAppartment.civic_number === appartment.civic_number) {
+            //       alreadyExists = true;
+            //       appartmentIndex = state.selectedBuilding.appartments.indexOf(buildingAppartment);
+            //       console.log('appartment ', appartmentIndex);
+            //     }
+            //   }
+
+            // if (alreadyExists) {
+            // const newAppartment: Appartment =
+            //     state.selectedBuilding.appartments.find((a) => a.civic_number === appartment.civic_number)
+
+            // let updatedAppartment: Appartment = { ...appartment };
+            // updatedAppartment = appartment;
+
+            // const updatedAppartments: Appartment[] = [...state.selectedBuilding.appartments];
+            // updatedAppartments[appartmentIndex] = updatedAppartment;
+
+            // let updatedBuilding: Building = {...state.selectedBuilding}
+            // updatedBuilding.appartments[appartmentIndex] = updatedAppartment;
+
+            // return {
+            //     ...state,
+            //     selectedBuilding: {...updatedBuilding},
+            // };
+            // }
         }
 
         default: return state;

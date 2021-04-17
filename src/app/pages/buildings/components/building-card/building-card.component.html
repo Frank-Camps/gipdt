@@ -13,7 +13,7 @@
    </nb-accordion-item-header>
    <nb-accordion-item-body>
      <nb-list>
-       <nb-list-item *ngFor="let a of building.appartments" (click)="selectAppartment(a)" [appartment]="appartment">{{a.civic_number}}</nb-list-item>
+       <nb-list-item *ngFor="let a of building.appartments" (click)="selectAppartment(a)">{{a.civic_number}}</nb-list-item>
      </nb-list>
      <button nbButton status="info" (click)="addNewAppartment()">Ajouter un appartement</button>
    </nb-accordion-item-body>
