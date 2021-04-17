@@ -1,3 +1,4 @@
+import { AddAppartment } from './../../../../@store/actions/building.action';
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Appartment, MOCK_APPARTMENT } from '../../../../@interface/appartment.interface';
@@ -33,11 +34,6 @@ export class NewAppartmentDialogComponent implements OnInit {
   }
 
   public addNewAppartment(appartment: Appartment):void {
-    this.appartment = appartment;
-    this.store.select(BuildingSelector.selectedBuilding).subscribe(building => {
-      console.log('appartments ', building.appartments);
-      
-
-    })
+    this.store.dispatch(new AddAppartment(appartment));
   }
 }

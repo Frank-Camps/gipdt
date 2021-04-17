@@ -10,7 +10,7 @@ export interface IBuildingAction {
     SELECT_BUILDING: string;
     LOAD_BUILDINGS: string;
     DELETE_BUILDING: string;
-    ADD_TENANT_TO_APPARTMENT: string;
+    ADD_APPARTMENT: string;
 }
 
 export const buildingActionTypes: IBuildingAction = {
@@ -19,7 +19,7 @@ export const buildingActionTypes: IBuildingAction = {
     GET_ALL_BUILDING: `[${CATEGORY}] Get All`,
     LOAD_BUILDINGS: `[${CATEGORY}] Load`,
     DELETE_BUILDING: `[${CATEGORY}] Delete`,
-    ADD_TENANT_TO_APPARTMENT: `[${CATEGORY}] Add tenant to appartment`,
+    ADD_APPARTMENT: `[${CATEGORY}] Add appartment`,
 
 }
 
@@ -53,8 +53,8 @@ export class DeleteBuildingAction implements Action {
     public constructor(public buildingID: string) { }
 }
 
-export class AddTenantToAppartment implements Action {
-    type: string = buildingActionTypes.ADD_TENANT_TO_APPARTMENT;
+export class AddAppartment implements Action {
+    type: string = buildingActionTypes.ADD_APPARTMENT;
     public constructor(public appartment: Appartment) {}
 }
 
@@ -63,4 +63,4 @@ export type BuildingActions =
 GetAllBuildingsAction |
 SaveBuildingAction |
 SelectBuildingAction |
-AddTenantToAppartment
+AddAppartment
