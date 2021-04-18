@@ -13,7 +13,6 @@ export class HttpBuildingsService {
     public constructor() {}
     // Put
     static async putBuildingById(id: string, building: any) {
-        console.log('id', id, 'building', building);
         return axios.put(url + id, building);
     }
 
@@ -28,8 +27,6 @@ export class HttpBuildingsService {
 
     // Delete
     static async deleteOrderById(id: string) {
-      console.log('id in service');
-
       return axios.delete(url + id);
     }
 

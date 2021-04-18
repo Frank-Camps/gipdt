@@ -9,12 +9,7 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
         case buildingActionTypes.SELECT_BUILDING: {
           const buildingId: string = (action as SelectBuildingAction).buildingId;
           let building: Building | undefined = state.buildings.find(o => o.id === buildingId);
-          console.log(building, 'selectedBuilding in reducer')
-
-            // if(!building) {
-            //     building = {...MOCK_BUILDING};
-            //     building.id = buildingId;
-            // }
+          
             return {
                 ...state,
                 selectedBuilding: {...building}
@@ -32,44 +27,42 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
             let appartment: Appartment = (action as AddAppartment).appartment;
             let alreadyExists = false;
             let appartmentIndex: number;
+            let selectedBuildingUpdated: Building;
+            console.log('this app in reducer ', appartment);
+            
+            
+            for (const a of state.selectedBuilding.appartments) {
+                if(a.civic_number === appartment.civic_number ) {
+                    alreadyExists = true;
+                    appartmentIndex = state.selectedBuilding.appartments.indexOf(a);
+                }
+            }
 
-            let selectedBuildingAppartment: Appartment[] = [...state.selectedBuilding.appartments, {...appartment}];
-            let selectedBuildingUpdated: Building = {...state.selectedBuilding, appartments: selectedBuildingAppartment}
+            if(alreadyExists) {
+                const newAppartment: Appartment = state.selectedBuilding.appartments.find(app => app.civic_number === appartment.civic_number)
+                const updatedAppartment: Appartment = {...appartment};
+                console.log('selectedBuildingUpdated ', updatedAppartment)
 
+                const updatedAppartments: Appartment[] = [...state.selectedBuilding.appartments];
+                updatedAppartments[appartmentIndex] = {...updatedAppartment}
 
-          return {
-            ...state,
-            selectedBuilding: {...selectedBuildingUpdated}
-          }
+                let selectedBuildingUpdated: Building = {...state.selectedBuilding, appartments: updatedAppartments}
+                return {
+                    ...state,
+                    selectedBuilding: {...selectedBuildingUpdated}
+                }
+            }
+            else {
+                let selectedBuildingAppartment: Appartment[] = [...state.selectedBuilding.appartments, {...appartment}];
+                let selectedBuildingUpdated: Building = {...state.selectedBuilding, appartments: selectedBuildingAppartment}
+                console.log('selectedBuildingUpdated ', selectedBuildingUpdated)
+                return {
+                    ...state,
+                    selectedBuilding: {...selectedBuildingUpdated}
 
-            // for (const buildingAppartment of state.selectedBuilding.appartments) {
-            //     if (buildingAppartment.civic_number === appartment.civic_number) {
-            //       alreadyExists = true;
-            //       appartmentIndex = state.selectedBuilding.appartments.indexOf(buildingAppartment);
-            //       console.log('appartment ', appartmentIndex);
-            //     }
-            //   }
-
-            // if (alreadyExists) {
-            // const newAppartment: Appartment =
-            //     state.selectedBuilding.appartments.find((a) => a.civic_number === appartment.civic_number)
-
-            // let updatedAppartment: Appartment = { ...appartment };
-            // updatedAppartment = appartment;
-
-            // const updatedAppartments: Appartment[] = [...state.selectedBuilding.appartments];
-            // updatedAppartments[appartmentIndex] = updatedAppartment;
-
-            // let updatedBuilding: Building = {...state.selectedBuilding}
-            // updatedBuilding.appartments[appartmentIndex] = updatedAppartment;
-
-            // return {
-            //     ...state,
-            //     selectedBuilding: {...updatedBuilding},
-            // };
-            // }
+                }
+            }
         }
-
         default: return state;
     }
 }

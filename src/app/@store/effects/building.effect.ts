@@ -16,7 +16,7 @@ export class BuildingEffects {
         map((action: SaveBuildingAction) => action.building),
         switchMap(building => HttpBuildingsService.putBuildingById(building.id, building)),
         map((response: AxiosResponse<any>) => {
-            console.log("put Building response: ", response.data);
+            // console.log("put Building response: ", response.data);
             return new GetAllBuildingsAction();
         })
     );
@@ -26,7 +26,7 @@ export class BuildingEffects {
         ofType<GetAllBuildingsAction>(buildingActionTypes.GET_ALL_BUILDING),
         switchMap(() => HttpBuildingsService.getBuildings()),
         map((response: AxiosResponse<any>) => {
-            console.log("get all orders response: ", response.data);
+            // console.log("get all orders response: ", response.data);
             return new LoadBuildingAction(response.data);
         })
     );
@@ -37,7 +37,7 @@ export class BuildingEffects {
         map((action: DeleteBuildingAction) => action.buildingID),
         switchMap(id => HttpBuildingsService.deleteOrderById(id)),
         map((response: AxiosResponse<any>) => {
-            console.log("delete order response: ", response.data);
+            // console.log("delete order response: ", response.data);
             return new GetAllBuildingsAction();
         })
     );
