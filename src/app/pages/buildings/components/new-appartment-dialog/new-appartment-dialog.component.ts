@@ -17,25 +17,18 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class NewAppartmentDialogComponent implements OnInit {
 
   public appartment: Appartment = {...MOCK_APPARTMENT};
-  public tenant: Tenant = {...MOCK_TENANT};
   public appartments: Appartment[] = [];
 
   constructor(private store: Store<IAppState>, protected ref: NbDialogRef<NewAppartmentDialogComponent>) {}
   ngOnInit(): void {
-    this.store.select(BuildingSelector.selectedBuilding).subscribe(building => {
-      this.appartments = [...building.appartments];
-      
-    })
-    
-    
+
   }
 
   public addNewTenantToAppartment(appartment: Appartment): void {
-    
+    this.appartment.tenants = [...appartment.tenants, {...MOCK_TENANT}];
   }
 
   public addNewAppartment(appartment: Appartment):void {
-    console.log('this.appartment in fct ', appartment)
     this.store.dispatch(new AddAppartment(appartment));
     let updatedSelectedBuilding: Building;
     this.store.select(BuildingSelector.selectedBuilding).subscribe((building: Building) => {
