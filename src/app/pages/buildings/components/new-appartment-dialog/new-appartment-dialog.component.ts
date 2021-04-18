@@ -1,13 +1,13 @@
+import { Tenant } from './../../../../@interface/Tenant.interface';
 import { AddAppartment, SaveBuildingAction } from './../../../../@store/actions/building.action';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Appartment, MOCK_APPARTMENT } from '../../../../@interface/appartment.interface';
 import { Building } from '../../../../@interface/Building.interface';
-import { MOCK_TENANT, Tenant } from '../../../../@interface/Tenant.interface';
+import { MOCK_TENANT } from '../../../../@interface/Tenant.interface';
 import { IAppState } from '../../../../@store';
 import { BuildingSelector } from '../../../../@store/selectors/building.selector';
 import { NbDialogRef } from '@nebular/theme';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'ngx-new-appartment-dialog',
@@ -18,9 +18,17 @@ export class NewAppartmentDialogComponent implements OnInit {
 
   public appartment: Appartment = {...MOCK_APPARTMENT};
   public appartments: Appartment[] = [];
+  public tempTenants: Tenant[] =[]
 
   constructor(private store: Store<IAppState>, protected ref: NbDialogRef<NewAppartmentDialogComponent>) {}
   ngOnInit(): void {
+    // this.appartment.tenants.forEach(tenant => {
+    //   this.appartment.tenants = [{...tenant}];
+    // })
+    this.appartment.tenants.forEach(tenant => {
+      this.tempTenants.push({...tenant})
+    })
+    this.appartment.tenants = this.tempTenants;
 
   }
 
