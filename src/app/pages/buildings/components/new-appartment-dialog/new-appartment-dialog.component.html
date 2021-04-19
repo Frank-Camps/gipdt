@@ -2,26 +2,31 @@
     <nb-card-header class="main-card-header">
         <nb-form-field>
             <label>Appartement #</label>
-            <input nbInput type="text" [(ngModel)]="appartment.civic_number"/>
+            <input nbInput type="text" fullWidth [(ngModel)]="appartment.civic_number"/>
+        </nb-form-field>
+        <nb-form-field>
+          <label>Grandeur</label>
+          <input nbInput type="text" fullWidth [(ngModel)]="appartment.rooms" />
+        </nb-form-field>
+        <nb-form-field>
+          <label>Prix / mois</label>
+          <input nbInput type="number" fullWidth [(ngModel)]="appartment.price" />
         </nb-form-field>
         <nb-form-field>
             <label>Disponibilité</label>
-            <nb-select placeholder="NgModel" fullWidth>
-                <nb-option value="1">Disponible</nb-option>
-                <nb-option value="2">Loué</nb-option>
-                <nb-option value="3">En rénovation</nb-option>
+            <nb-select placeholder="NgModel" fullWidth [(ngModel)]="appartment.status">
+                <nb-option  *ngFor="let s of appartmentStatusOptions" [value]="s"> {{s}} </nb-option>
               </nb-select>
         </nb-form-field>
     </nb-card-header>
     <nb-card-body>
-        <nb-card>
-            <nb-card-header>
-                Locataires
-                <button nbButton status="info" (click)="addNewTenantToAppartment(appartment)">Ajouter un locataire</button>
+        <nb-card hero status="info">
+            <nb-card-header >
+              <button nbButton  status="primary" class="shadowButton" (click)="addNewTenantToAppartment(appartment)">Ajouter un locataire</button>
             </nb-card-header>
-            <nb-card-body>
+            <nb-card-body >
                 <!-- <ngx-tenant [tenants]="appartment.tenants"></ngx-tenant> -->
-                <nb-card *ngFor="let tenant of appartment.tenants">
+                <nb-card *ngFor="let tenant of appartment.tenants" accent="info" class="tenant-card-body-list">
                   <div class="tenant-card-body-wrapper" >
                     <nb-form-field class="tenant-card-body-form-field">
                       <label>Nom de famille</label>
@@ -51,6 +56,6 @@
         </nb-card>
     </nb-card-body>
     <nb-card-footer>
-        <button nbButton status="info" (click)="addNewAppartment(appartment)">sauvegarder</button>
+        <button nbButton status="info" class="shadowButton" (click)="addNewAppartment(appartment)">sauvegarder</button>
     </nb-card-footer>
 </nb-card>

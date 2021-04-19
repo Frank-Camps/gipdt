@@ -8,6 +8,7 @@ import { MOCK_TENANT } from '../../../../@interface/Tenant.interface';
 import { IAppState } from '../../../../@store';
 import { BuildingSelector } from '../../../../@store/selectors/building.selector';
 import { NbDialogRef } from '@nebular/theme';
+import { AppartmentStatus } from '../../../../@core/data/appartmentStatus';
 
 @Component({
   selector: 'ngx-new-appartment-dialog',
@@ -19,16 +20,16 @@ export class NewAppartmentDialogComponent implements OnInit {
   public appartment: Appartment = {...MOCK_APPARTMENT};
   public appartments: Appartment[] = [];
   public tempTenants: Tenant[] =[]
+  public get appartmentStatusOptions(): string[] { return AppartmentStatus; }
 
   constructor(private store: Store<IAppState>, protected ref: NbDialogRef<NewAppartmentDialogComponent>) {}
   ngOnInit(): void {
-    // this.appartment.tenants.forEach(tenant => {
-    //   this.appartment.tenants = [{...tenant}];
-    // })
+    // to refactor .map() function
     this.appartment.tenants.forEach(tenant => {
       this.tempTenants.push({...tenant})
     })
     this.appartment.tenants = this.tempTenants;
+
 
   }
 

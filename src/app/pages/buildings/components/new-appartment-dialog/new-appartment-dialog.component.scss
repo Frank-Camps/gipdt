@@ -13,3 +13,16 @@
   margin: 0 10px;
 }
 
+.tenant-card-body-list {
+  padding: 5px 0px 15px;
+}
+
+.shadowButton {
+  -webkit-box-shadow: 3px 8px 24px -3px rgba(0,0,0,0.6);
+  -moz-box-shadow: 3px 8px 24px -3px rgba(0,0,0,0.6);
+  box-shadow: 3px 8px 24px -3px rgba(0,0,0,0.6);
+}
+
+nb-form-field {
+  margin: 5px;
+}

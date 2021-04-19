@@ -9,7 +9,7 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
         case buildingActionTypes.SELECT_BUILDING: {
           const buildingId: string = (action as SelectBuildingAction).buildingId;
           let building: Building | undefined = state.buildings.find(o => o.id === buildingId);
-          
+
             return {
                 ...state,
                 selectedBuilding: {...building}
@@ -28,9 +28,8 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
             let alreadyExists = false;
             let appartmentIndex: number;
             let selectedBuildingUpdated: Building;
-            console.log('this app in reducer ', appartment);
-            
-            
+
+
             for (const a of state.selectedBuilding.appartments) {
                 if(a.civic_number === appartment.civic_number ) {
                     alreadyExists = true;
@@ -41,7 +40,6 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
             if(alreadyExists) {
                 const newAppartment: Appartment = state.selectedBuilding.appartments.find(app => app.civic_number === appartment.civic_number)
                 const updatedAppartment: Appartment = {...appartment};
-                console.log('selectedBuildingUpdated ', updatedAppartment)
 
                 const updatedAppartments: Appartment[] = [...state.selectedBuilding.appartments];
                 updatedAppartments[appartmentIndex] = {...updatedAppartment}
@@ -55,7 +53,6 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
             else {
                 let selectedBuildingAppartment: Appartment[] = [...state.selectedBuilding.appartments, {...appartment}];
                 let selectedBuildingUpdated: Building = {...state.selectedBuilding, appartments: selectedBuildingAppartment}
-                console.log('selectedBuildingUpdated ', selectedBuildingUpdated)
                 return {
                     ...state,
                     selectedBuilding: {...selectedBuildingUpdated}
