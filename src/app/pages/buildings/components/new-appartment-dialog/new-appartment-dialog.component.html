@@ -25,8 +25,12 @@
               <button nbButton  status="primary" class="shadowButton" (click)="addNewTenantToAppartment(appartment)">Ajouter un locataire</button>
             </nb-card-header>
             <nb-card-body >
-                <!-- <ngx-tenant [tenants]="appartment.tenants"></ngx-tenant> -->
                 <nb-card *ngFor="let tenant of appartment.tenants" accent="info" class="tenant-card-body-list">
+                  <div class="tenant-card-remove-action">
+                    <button nbButton (click)="removeTenantToAppartment(tenant)">
+                      <nb-icon icon='times' pack="fa"></nb-icon>
+                   </button>
+                  </div>
                   <div class="tenant-card-body-wrapper" >
                     <nb-form-field class="tenant-card-body-form-field">
                       <label>Nom de famille</label>
@@ -56,6 +60,7 @@
         </nb-card>
     </nb-card-body>
     <nb-card-footer>
-        <button nbButton status="info" class="shadowButton" (click)="addNewAppartment(appartment)">sauvegarder</button>
+        <button nbButton status="primary" class="shadowButton" (click)="addNewAppartment(appartment)">sauvegarder</button>
+        <button nbButton status="danger" class="shadowButton" (click)="removeAppartment(appartment)">Supprimer</button>
     </nb-card-footer>
 </nb-card>

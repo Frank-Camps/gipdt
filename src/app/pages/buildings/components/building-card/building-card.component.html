@@ -1,21 +1,51 @@
-<nb-accordion class="mt-3" >
-  <nb-accordion-item>
+<nb-accordion class="mt-3" size="medium">
+  <nb-accordion-item >
    <nb-accordion-item-header class="accordion-item-header">
      <span>{{building.street_number}} {{building.street_name}}, {{building.city}}</span>
     <div>
-      <button nbButton (click)="modifyBuilding(building)">
+      <button nbButton class="shadowButton ml-2"  (click)="modifyBuilding(building)">
         <nb-icon icon='edit' pack="fa"></nb-icon>
      </button>
-      <button nbButton (click)="deleteBuilding(building.id)">
+      <button nbButton class="shadowButton ml-2" (click)="deleteBuilding(building.id)">
         <nb-icon icon='trash' pack="fa" status="danger"></nb-icon>
      </button>
     </div>
    </nb-accordion-item-header>
    <nb-accordion-item-body>
-     <nb-list>
-       <nb-list-item *ngFor="let a of building.appartments" (click)="selectAppartment(a)">{{a.civic_number}}</nb-list-item>
+     <!-- <nb-list>
+       <nb-list-item *ngFor="let a of building.appartments" (click)="selectAppartment(a, building.id)">{{a.civic_number}}</nb-list-item>
      </nb-list>
-     <button nbButton status="info" (click)="addNewAppartment()">Ajouter un appartement</button>
-   </nb-accordion-item-body>
+      -->
+     <label class="search-label" for="search">Chercher appartement:</label>
+      <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
+
+     <table [nbTreeGrid]="dataSource" nbSort (sort)="updateSort($event)" equalColumnsWidth>
+
+      <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+      <ng-container *ngFor="let column of customColumn" [nbTreeGridColumnDef]="column">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getDirection(customColumn)" *nbTreeGridHeaderCellDef>
+          {{column}}
+        </th>
+
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="selectAppartment(row.data)">
+          {{row.data[column]}}
+        </td>
+      </ng-container>
+
+      <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getDirection(column)" *nbTreeGridHeaderCellDef>
+          {{column}}
+        </th>
+
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+      </ng-container>
+
+    </table>
+    <div class="building-card-accordion-item">
+      <button nbButton status="info" class="mt-2 shadowButton" (click)="addNewAppartment(building.id)">Ajouter un appartement</button>
+    </div>
+    </nb-accordion-item-body>
   </nb-accordion-item>
  </nb-accordion>

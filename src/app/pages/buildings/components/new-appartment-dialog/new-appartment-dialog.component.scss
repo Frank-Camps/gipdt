@@ -13,14 +13,21 @@
   margin: 0 10px;
 }
 
-.tenant-card-body-list {
-  padding: 5px 0px 15px;
+.tenant-card-remove-action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  button {
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.shadowButton {
-  -webkit-box-shadow: 3px 8px 24px -3px rgba(0,0,0,0.6);
-  -moz-box-shadow: 3px 8px 24px -3px rgba(0,0,0,0.6);
-  box-shadow: 3px 8px 24px -3px rgba(0,0,0,0.6);
+.tenant-card-body-list {
+  padding: 5px 0px 15px;
 }
 
 nb-form-field {

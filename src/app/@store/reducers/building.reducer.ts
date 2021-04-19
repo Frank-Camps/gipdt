@@ -1,6 +1,6 @@
 import { Appartment } from '../../@interface/appartment.interface';
 import { Building } from './../../@interface/Building.interface';
-import { BuildingActions, buildingActionTypes, LoadBuildingAction, SelectBuildingAction, AddAppartment } from './../actions/building.action';
+import { BuildingActions, buildingActionTypes, LoadBuildingAction, SelectBuildingAction, AddAppartment, RemoveAppartment } from './../actions/building.action';
 import { IBuildingState, INIT_BUILDING_STATE } from './../states/building.state';
 
 export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, action: BuildingActions): IBuildingState {
@@ -60,6 +60,17 @@ export function buildingReducer (state: IBuildingState = INIT_BUILDING_STATE, ac
                 }
             }
         }
+        case buildingActionTypes.REMOVE_APPARTMENT: {
+            let appartment: Appartment = (action as RemoveAppartment).appartment;
+            let filteredAppartment: Appartment[] = state.selectedBuilding.appartments.filter(a => a.civic_number !== appartment.civic_number);
+            let selectedBuildingUpdated: Building = {...state.selectedBuilding, appartments: filteredAppartment}
+
+            return {
+                ...state,
+                selectedBuilding: {...selectedBuildingUpdated}
+            }
+        }
+
         default: return state;
     }
 }

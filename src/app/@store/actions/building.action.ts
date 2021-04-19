@@ -11,6 +11,7 @@ export interface IBuildingAction {
     LOAD_BUILDINGS: string;
     DELETE_BUILDING: string;
     ADD_APPARTMENT: string;
+    REMOVE_APPARTMENT: string;
 }
 
 export const buildingActionTypes: IBuildingAction = {
@@ -20,6 +21,7 @@ export const buildingActionTypes: IBuildingAction = {
     LOAD_BUILDINGS: `[${CATEGORY}] Load`,
     DELETE_BUILDING: `[${CATEGORY}] Delete`,
     ADD_APPARTMENT: `[${CATEGORY}] Add appartment`,
+    REMOVE_APPARTMENT: `[${CATEGORY}] Remove appartment`,
 
 }
 
@@ -58,9 +60,15 @@ export class AddAppartment implements Action {
     public constructor(public appartment: Appartment) {}
 }
 
+export class RemoveAppartment implements Action {
+    type: string = buildingActionTypes.REMOVE_APPARTMENT;
+    public constructor(public appartment: Appartment) {}
+}
+
 
 export type BuildingActions =
 GetAllBuildingsAction |
 SaveBuildingAction |
 SelectBuildingAction |
-AddAppartment
+AddAppartment |
+RemoveAppartment

@@ -1,5 +1,5 @@
 import { Tenant } from './../../../../@interface/Tenant.interface';
-import { AddAppartment, SaveBuildingAction } from './../../../../@store/actions/building.action';
+import { AddAppartment, RemoveAppartment, SaveBuildingAction } from './../../../../@store/actions/building.action';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Appartment, MOCK_APPARTMENT } from '../../../../@interface/appartment.interface';
@@ -36,9 +36,27 @@ export class NewAppartmentDialogComponent implements OnInit {
   public addNewTenantToAppartment(appartment: Appartment): void {
     this.appartment.tenants = [...appartment.tenants, {...MOCK_TENANT}];
   }
+  
+  public removeTenantToAppartment(t: Tenant): void {
+    let selectedTenant: Tenant = this.appartment.tenants.find(tenant => tenant === t);
+    let tenantIndex = this.appartment.tenants.indexOf(selectedTenant);    
+    this.appartment.tenants.splice(tenantIndex, 1);
+  }
 
   public addNewAppartment(appartment: Appartment):void {
     this.store.dispatch(new AddAppartment(appartment));
+    let updatedSelectedBuilding: Building;
+    this.store.select(BuildingSelector.selectedBuilding).subscribe((building: Building) => {
+      updatedSelectedBuilding = {...building};
+    })
+    this.store.dispatch(new SaveBuildingAction(updatedSelectedBuilding));
+    this.appartment = {...MOCK_APPARTMENT};
+    this.appartment.tenants = [MOCK_TENANT]
+    this.ref.close();
+  }
+
+  public removeAppartment(appartment: Appartment): void {
+    this.store.dispatch(new RemoveAppartment(appartment));
     let updatedSelectedBuilding: Building;
     this.store.select(BuildingSelector.selectedBuilding).subscribe((building: Building) => {
       updatedSelectedBuilding = {...building};
