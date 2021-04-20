@@ -1,0 +1,20 @@
+<nb-card class="container">
+  <nb-card-header>Ajouter un Nouvelle immeuble {{newCompany.id}}</nb-card-header>
+  <nb-card-body>
+    <div class="newCompanyInfosContainer">
+      <nb-form-field class="newCompanyFormField">
+        <input type="text" nbInput fullWidth placeholder="Nom de la compagnie" [(ngModel)]="newCompany.name">
+      </nb-form-field>
+      <nb-form-field class="newCompanyFormField">
+        <input type="text" nbInput fullWidth placeholder="Numéro de téléphone" [(ngModel)]="newCompany.phone">
+      </nb-form-field>
+      <nb-form-field class="newCompanyFormField">
+        <input type="text" nbInput fullWidth placeholder="adresse de la compagnie" [(ngModel)]="newCompany.address">
+      </nb-form-field>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <button class="newCompanyDialogAction" nbButton status="info" (click)="submit()">Ajouter</button>
+    <button class="newCompanyDialogAction" nbButton outline (click)="close()">Annuler</button>
+  </nb-card-footer>
+</nb-card>

@@ -43,26 +43,26 @@ export class BuildingCardComponent implements OnInit, OnDestroy {
   public sortColumn: string = '';
   public sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  
+
 
   public data: TreeNode<Appartment>[] = [];
 
-  constructor(private dialogService: NbDialogService, private store:Store<IAppState>, private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>) {    
+  constructor(private dialogService: NbDialogService, private store:Store<IAppState>, private dataSourceBuilder: NbTreeGridDataSourceBuilder<any>) {
   }
-  
+
   ngOnInit(): void {
     let tempData = [];
     let data = {};
-    
+
     this.building.appartments.forEach((appartment: Appartment) => {
       // console.log('appartment ', appartment);
       this.appartment = {...appartment};
       data = {civic_number: appartment.civic_number, rooms: appartment.rooms, price: appartment.price, status: appartment.status, tenants: [...appartment.tenants]}
       tempData.push({...data});
       console.log('temp ', tempData);
-      
+
     })
-    this.data = [...tempData];
+    this.data = [...tempData];  
     const getters: NbGetters<FSEntry, FSEntry> = {
       dataGetter: (node: FSEntry) => node,
       // childrenGetter: (node: FSEntry) => node.childEntries || undefined,

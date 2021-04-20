@@ -30,25 +30,19 @@ router.put('/', async (req, res) => {
 });
 
 // /*============================================= */
-// // Options Id
+// // Company Id
 // /*============================================= */
-// // Get options Id
-// router.get('/options-index', async (req, res) => {
-//   const index = await loadIndexIdCollection();
-//   res.send(await index.findOne({title: "options-index-id"}));
-// });
+// Get
+router.get('/company', async (req, res) => {
+  const index = await loadIdsCollection();
+  res.send(await index.findOne({name: "company"}));
+});
 
-// // Put
-// router.put('/options-index', async (req, res) => {
-//   const index = await loadIndexIdCollection();
-//   res.send(await index.updateOne({title: "options-index-id"}, {$set: req.body}));
-// });
-
-// // Delete
-// router.post('/', async (req, res) => {
-//     const index = await loadIndexIdCollection();
-//     res.send(await index.deleteOne({title: "index-id"}));
-// });
+// Put
+router.put('/company', async (req, res) => {
+  const index = await loadIdsCollection();
+  res.send(await index.updateOne({name: "company"}, {$set: req.body}));
+});
 
 // /*============================================= */
 // // Options List Id

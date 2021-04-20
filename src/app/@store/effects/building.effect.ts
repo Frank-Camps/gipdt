@@ -1,10 +1,10 @@
-import { HttpBuildingsService } from './../../@service/router/building.service';
-import { buildingActionTypes, LoadBuildingAction, GetAllBuildingsAction, SaveBuildingAction, DeleteBuildingAction, AddAppartment } from './../actions/building.action';
+import { buildingActionTypes, LoadBuildingAction, GetAllBuildingsAction, SaveBuildingAction, DeleteBuildingAction, AddAppartment } from '../actions/building.action';
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Observable } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
 import { AxiosResponse } from "axios";
+import { HttpBuildingsService } from '../../@service/router/building.service';
 
 @Injectable()
 export class BuildingEffects {

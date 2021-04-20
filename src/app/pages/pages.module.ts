@@ -9,6 +9,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ProductsModule } from './products/products.module';
 import { BuildingsModule } from './buildings/buildings.module';
+import { CompagniesModule } from './compagnies/compagnies.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { BuildingsModule } from './buildings/buildings.module';
     ECommerceModule,
     MiscellaneousModule,
     ProductsModule,
-    BuildingsModule
+    BuildingsModule,
+    CompagniesModule,
 
   ],
   declarations: [

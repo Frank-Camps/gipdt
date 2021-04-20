@@ -27,6 +27,7 @@ import { reducers, metaReducers } from './@store'
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from './../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { CompanyEffects } from './@store/effects/company.effect';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { EffectsModule } from '@ngrx/effects';
     // store
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
-      BuildingEffects
+      BuildingEffects,
+      CompanyEffects
     ]),
     StoreRouterConnectingModule.forRoot(),
         !environment.production

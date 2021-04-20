@@ -1,0 +1,19 @@
+.newCompanyInfosContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.newCompanyFormField {
+  margin: 0 15px;
+}
+
+.newCompagniesList {
+  width: 100% ;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.newCompanyDialogAction {
+  margin: 0 10px;
+}

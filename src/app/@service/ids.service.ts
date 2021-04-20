@@ -25,6 +25,19 @@ export class HttpIdsService {
       return await axios.put(url, { value: newValue });
     }
 
+    /*============================================= */
+    /*================= COMPANY IDS ================= */
+    /*============================================= */
+    // Get
+    static async getCompanyIndexId() {
+      return await axios.get(url + 'company');
+    }
+
+    // Put
+    static async putCompanyIndexId(newValue: number) {
+      return await axios.put(url + 'company', { value: newValue });
+    }
+
     // /*============================================= */
     // /*================= OPTIONS ================= */
     // /*============================================= */
