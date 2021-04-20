@@ -4,13 +4,13 @@
   </div>
     <div class="col-md-6 search-form-field-container">
         <nb-form-field style="width: 100%;">
-          <input type="text" nbInput>
+          <input type="text" nbInput [(ngModel)]="searchId">
           <nb-icon nbSuffix icon="search" pack="fa"></nb-icon>
         </nb-form-field>
     </div>
 </div>
 <div class="row mt-5">
   <div class="col-md-12">
-    <ngx-building-card *ngFor="let building of buildings" [building]="building"></ngx-building-card>
+    <ngx-building-card *ngFor="let building of (buildings | BuildingsFilter: searchId)" [building]="building"></ngx-building-card>
   </div>
 </div>

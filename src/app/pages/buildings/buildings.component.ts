@@ -23,6 +23,7 @@ export class BuildingsComponent implements OnInit, OnDestroy {
   public buildings: Building[] = [];
   public building: Building = {...MOCK_BUILDING};
   public buildingId: string = '';
+  public searchId: string = '';
 
 
   ngOnInit(): void {
